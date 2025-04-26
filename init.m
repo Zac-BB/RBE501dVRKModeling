@@ -1,4 +1,5 @@
 % intit the pathing for the libraties
 
-addpath("libs/")
-addpath("kinematics/")
+addpath("lib/")
+addpath("robotModel/")
+addpath("test/")
