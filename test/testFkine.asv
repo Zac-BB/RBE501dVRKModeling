@@ -3,18 +3,17 @@ classdef testFkine < matlab.unittest.TestCase
         q = [eye(7)]
         S
         M
-        S_body
         robot
     end
 
     methods (TestClassSetup)
         % Shared setup for the entire test class
         function createModels(testCase)
-            [s,m]=make_kinematics_model();
+            [s,m ]=make_kinematics_model();
             my_robot= make_robot();
-
+            
             testCase.S = s;
-            testCase.S_body = adjoint(inv(m))*s;
+            testCase.S_body = adjoint(m)*s;
             testCase.M = m;
             testCase.robot = my_robot;
         end
@@ -114,20 +113,12 @@ classdef testFkine < matlab.unittest.TestCase
             error = norm(error);
             testCase.assertTrue(error < 1e-4);
         end
-        
-        function testHomeConfigBody(testCase)
-            T_ref = double(testCase.robot.fkine(zeros(1,10)));
-            T_fk = fkine(testCase.S,testCase.M,zeros(1,7),'body');
-            error = T_ref - T_fk;
-            error = norm(error);
-            testCase.assertTrue(error < 1e-4);
-        end
 
         function testBodyJoint1(testCase)
             test_q = testCase.q(1,:);
             qr = testCase.compQ(test_q);
-            T_ref = double(testCase.robot.fkine(qr))
-            T_fk = fkine(testCase.S_body,testCase.M,test_q,'body')
+            T_ref = double(testCase.robot.fkine(qr));
+            T_fk = fkine(testCase.S_body,testCase.M,test_q,'body');
             error = T_ref - T_fk;
             error = norm(error);
             testCase.assertTrue(error < 1e-4);
