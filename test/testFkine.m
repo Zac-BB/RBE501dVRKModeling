@@ -126,8 +126,8 @@ classdef testFkine < matlab.unittest.TestCase
         function testBodyJoint1(testCase)
             test_q = testCase.q(1,:);
             qr = testCase.compQ(test_q);
-            T_ref = double(testCase.robot.fkine(qr))
-            T_fk = fkine(testCase.S_body,testCase.M,test_q,'body')
+            T_ref = double(testCase.robot.fkine(qr));
+            T_fk = fkine(testCase.S_body,testCase.M,test_q,'body');
             error = T_ref - T_fk;
             error = norm(error);
             testCase.assertTrue(error < 1e-4);
