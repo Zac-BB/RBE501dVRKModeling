@@ -16,6 +16,7 @@ function T = fkine(S,M,q,frame)
 %
     if(strcmp(frame,'body'))
         T = M;
+        q = [q(1) q(2) q(2) q(2) q(3) q(4) q(5) q(6) q(7)];
         for i = 1:size(S,2)
             Si = S(:,i);
             qi = q(i);
@@ -23,6 +24,7 @@ function T = fkine(S,M,q,frame)
         end
     elseif(strcmp(frame,'space'))
         T = eye(4);
+        q = [q(1) q(2) q(2) q(2) q(3) q(4) q(5) q(6) q(7)];
         for i = 1:size(S,2)
             Si = S(:,i);
             qi = q(i);
