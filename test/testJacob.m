@@ -158,13 +158,13 @@ classdef testJacob < matlab.unittest.TestCase
             testCase.assertTrue(all(double(subs(syms_refJ - syms_J,[dq1 dq2 dq3 dq4 dq5 dq6 dq7],ones(1,7))) < 1e-4));
         end
         function testBodyJoint1(testCase)
-            test_q = testCase.q(1,:)
+            test_q = testCase.q(1,:);
             qr = testCase.compQ(test_q);
-            J_b = jacobe(testCase.S,testCase.M,test_q)
-            Jcoords = [J_b(4:6,:); J_b(1:3,:)]
-            refJ = double(testCase.robot.jacob0(qr))
-            syms_refJ = refJ*testCase.compQ(ones(1,7))'
-            syms_J = Jcoords*ones(1,7)'
+            J_b = jacobe(testCase.S,testCase.M,test_q);
+            Jcoords = [J_b(4:6,:); J_b(1:3,:)];
+            refJ = double(testCase.robot.jacobe(qr));
+            syms_refJ = refJ*testCase.compQ(ones(1,7))';
+            syms_J = Jcoords*ones(1,7)';
             testCase.assertTrue(all(double(syms_refJ - syms_J) < 1e-4));
             
         end
@@ -174,11 +174,10 @@ classdef testJacob < matlab.unittest.TestCase
             qr = testCase.compQ(test_q);
             J_b = jacobe(testCase.S,testCase.M,test_q);
             Jcoords = [J_b(4:6,:); J_b(1:3,:)];
-            refJ = double(testCase.robot.jacob0(qr));
-            syms dq1 dq2 dq3 dq4 dq5 dq6 dq7
-            syms_refJ = refJ*[dq1 dq2 0 -dq2 dq2 dq3 dq4 dq5 dq6 dq7]';
-            syms_J = Jcoords*[dq1 dq2 dq3 dq4 dq5 dq6 dq7]';
-            testCase.assertTrue(all(double(subs(syms_refJ - syms_J,[dq1 dq2 dq3 dq4 dq5 dq6 dq7],ones(1,7))) < 1e-4));
+            refJ = double(testCase.robot.jacobe(qr));
+            syms_refJ = refJ*testCase.compQ(ones(1,7))';
+            syms_J = Jcoords*ones(1,7)';
+            testCase.assertTrue(all(double(syms_refJ - syms_J) < 1e-4));
         end
 
         function testBodyJoint3(testCase)
@@ -186,11 +185,10 @@ classdef testJacob < matlab.unittest.TestCase
             qr = testCase.compQ(test_q);
             J_b = jacobe(testCase.S,testCase.M,test_q);
             Jcoords = [J_b(4:6,:); J_b(1:3,:)];
-            refJ = double(testCase.robot.jacob0(qr));
-            syms dq1 dq2 dq3 dq4 dq5 dq6 dq7
-            syms_refJ = refJ*[dq1 dq2 0 -dq2 dq2 dq3 dq4 dq5 dq6 dq7]';
-            syms_J = Jcoords*[dq1 dq2 dq3 dq4 dq5 dq6 dq7]';
-            testCase.assertTrue(all(double(subs(syms_refJ - syms_J,[dq1 dq2 dq3 dq4 dq5 dq6 dq7],ones(1,7))) < 1e-4));
+            refJ = double(testCase.robot.jacobe(qr));
+            syms_refJ = refJ*testCase.compQ(ones(1,7))';
+            syms_J = Jcoords*ones(1,7)';
+            testCase.assertTrue(all(double(syms_refJ - syms_J) < 1e-4));
         end
 
         function testBodyJoint4(testCase)
@@ -198,11 +196,10 @@ classdef testJacob < matlab.unittest.TestCase
             qr = testCase.compQ(test_q);
             J_b = jacobe(testCase.S,testCase.M,test_q);
             Jcoords = [J_b(4:6,:); J_b(1:3,:)];
-            refJ = double(testCase.robot.jacob0(qr));
-            syms dq1 dq2 dq3 dq4 dq5 dq6 dq7
-            syms_refJ = refJ*[dq1 dq2 0 -dq2 dq2 dq3 dq4 dq5 dq6 dq7]';
-            syms_J = Jcoords*[dq1 dq2 dq3 dq4 dq5 dq6 dq7]';
-            testCase.assertTrue(all(double(subs(syms_refJ - syms_J,[dq1 dq2 dq3 dq4 dq5 dq6 dq7],ones(1,7))) < 1e-4));
+            refJ = double(testCase.robot.jacobe(qr));
+            syms_refJ = refJ*testCase.compQ(ones(1,7))';
+            syms_J = Jcoords*ones(1,7)';
+            testCase.assertTrue(all(double(syms_refJ - syms_J) < 1e-4));
         end
 
         function testBodyJoint5(testCase)
@@ -210,11 +207,10 @@ classdef testJacob < matlab.unittest.TestCase
             qr = testCase.compQ(test_q);
             J_b = jacobe(testCase.S,testCase.M,test_q);
             Jcoords = [J_b(4:6,:); J_b(1:3,:)];
-            refJ = double(testCase.robot.jacob0(qr));
-            syms dq1 dq2 dq3 dq4 dq5 dq6 dq7
-            syms_refJ = refJ*[dq1 dq2 0 -dq2 dq2 dq3 dq4 dq5 dq6 dq7]';
-            syms_J = Jcoords*[dq1 dq2 dq3 dq4 dq5 dq6 dq7]';
-            testCase.assertTrue(all(double(subs(syms_refJ - syms_J,[dq1 dq2 dq3 dq4 dq5 dq6 dq7],ones(1,7))) < 1e-4));
+            refJ = double(testCase.robot.jacobe(qr));
+            syms_refJ = refJ*testCase.compQ(ones(1,7))';
+            syms_J = Jcoords*ones(1,7)';
+            testCase.assertTrue(all(double(syms_refJ - syms_J) < 1e-4));
         end
 
         function testBodyJoint6(testCase)
@@ -222,11 +218,10 @@ classdef testJacob < matlab.unittest.TestCase
             qr = testCase.compQ(test_q);
             J_b = jacobe(testCase.S,testCase.M,test_q);
             Jcoords = [J_b(4:6,:); J_b(1:3,:)];
-            refJ = double(testCase.robot.jacob0(qr));
-            syms dq1 dq2 dq3 dq4 dq5 dq6 dq7
-            syms_refJ = refJ*[dq1 dq2 0 -dq2 dq2 dq3 dq4 dq5 dq6 dq7]';
-            syms_J = Jcoords*[dq1 dq2 dq3 dq4 dq5 dq6 dq7]';
-            testCase.assertTrue(all(double(subs(syms_refJ - syms_J,[dq1 dq2 dq3 dq4 dq5 dq6 dq7],ones(1,7))) < 1e-4));
+            refJ = double(testCase.robot.jacobe(qr));
+            syms_refJ = refJ*testCase.compQ(ones(1,7))';
+            syms_J = Jcoords*ones(1,7)';
+            testCase.assertTrue(all(double(syms_refJ - syms_J) < 1e-4));
         end
 
         function testBodyJoint7(testCase)
@@ -234,11 +229,10 @@ classdef testJacob < matlab.unittest.TestCase
             qr = testCase.compQ(test_q);
             J_b = jacobe(testCase.S,testCase.M,test_q);
             Jcoords = [J_b(4:6,:); J_b(1:3,:)];
-            refJ = double(testCase.robot.jacob0(qr));
-            syms dq1 dq2 dq3 dq4 dq5 dq6 dq7
-            syms_refJ = refJ*[dq1 dq2 0 -dq2 dq2 dq3 dq4 dq5 dq6 dq7]';
-            syms_J = Jcoords*[dq1 dq2 dq3 dq4 dq5 dq6 dq7]';
-            testCase.assertTrue(all(double(subs(syms_refJ - syms_J,[dq1 dq2 dq3 dq4 dq5 dq6 dq7],ones(1,7))) < 1e-4));
+            refJ = double(testCase.robot.jacobe(qr));
+            syms_refJ = refJ*testCase.compQ(ones(1,7))';
+            syms_J = Jcoords*ones(1,7)';
+            testCase.assertTrue(all(double(syms_refJ - syms_J) < 1e-4));
         end
 
         function testAllBody(testCase)
@@ -246,11 +240,10 @@ classdef testJacob < matlab.unittest.TestCase
             qr = testCase.compQ(test_q);
             J_b = jacobe(testCase.S,testCase.M,test_q);
             Jcoords = [J_b(4:6,:); J_b(1:3,:)];
-            refJ = double(testCase.robot.jacob0(qr));
-            syms dq1 dq2 dq3 dq4 dq5 dq6 dq7
-            syms_refJ = refJ*[dq1 dq2 0 -dq2 dq2 dq3 dq4 dq5 dq6 dq7]';
-            syms_J = Jcoords*[dq1 dq2 dq3 dq4 dq5 dq6 dq7]';
-            testCase.assertTrue(all(double(subs(syms_refJ - syms_J,[dq1 dq2 dq3 dq4 dq5 dq6 dq7],ones(1,7))) < 1e-4));
+            refJ = double(testCase.robot.jacobe(qr));
+            syms_refJ = refJ*testCase.compQ(ones(1,7))';
+            syms_J = Jcoords*ones(1,7)';
+            testCase.assertTrue(all(double(syms_refJ - syms_J) < 1e-4));
         end
     end
     methods (Access = private)
