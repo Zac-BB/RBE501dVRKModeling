@@ -245,6 +245,26 @@ classdef testJacob < matlab.unittest.TestCase
             syms_J = Jcoords*ones(1,7)';
             testCase.assertTrue(all(double(syms_refJ - syms_J) < 1e-4));
         end
+
+        function testAllAnalitic(testCase)
+            nTests = 100;
+            for i = 1:nTests
+                test_q = pi/2*(rand(1,7)-.5);
+                J_a = jacoba(testCase.S,testCase.M,test_q);
+    
+                J_ref  = zeros(3,7);
+                h = 1e-5;
+                dqs = h*eye(7);
+                for i = 1:7
+                    dq = dqs(i,:);
+                    T_q = fkine(testCase.S,testCase.M,test_q,"space");
+                    T_qdelq = fkine(testCase.S,testCase.M,test_q+dq,"space");
+                    J_ref(:,i) = (T_qdelq(1:3,end) - T_q(1:3,end)) ./ h;
+                end
+    
+                testCase.assertTrue(all(all(double(J_ref - J_a) < 1e-4)));
+            end
+        end
     end
     methods (Access = private)
         function qr = compQ(testCase, q)
