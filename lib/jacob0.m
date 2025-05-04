@@ -12,10 +12,13 @@ function J = jacob0(S,q)
 %
 %
     T = eye(4);
+    q = [q(1) q(2) q(2) q(2) q(3) q(4) q(5) q(6) q(7)];
     for i = 1:size(S,2)
         Si = S(:,i);
         J(:,i) = adjoint(T)*Si;
         T = T * twist2ht(Si,q(i));
         
     end
+    J = [J(:,1),J(:,2)+J(:,3)+J(:,4),J(:,5),J(:,6),J(:,7),J(:,8),J(:,9)];
+
 end

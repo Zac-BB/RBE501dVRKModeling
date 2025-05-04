@@ -30,5 +30,17 @@ S = [
 
 M = [0,1,0,-0.00091;1,0,0,-0.4358;0,0,-1,-0.5598;0,0,0,1];
 
+% L1 = 0.3;
+% L2 = 0.3;
+% L3 = 0.3;
+% S = [0 0 1 0 0 0;
+%      1 0 0 0 L1 0;
+%      1 0 0 0 L1 -L2]';
+% %% Part B - Calculate the forward kinematics with the Product of Exponentials formula in the body frame
+% % First, let us calculate the homogeneous transformation matrix M for the
+% % home configuration
+% R_home = [0 0 -1; 1 0 0; 0 -1 0]';
+% t_home = [0 L2 L1-L3]';
+% M = [R_home t_home; 0 0 0 1];
 
 end

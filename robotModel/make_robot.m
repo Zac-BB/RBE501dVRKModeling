@@ -36,6 +36,13 @@ robot = SerialLink([RevoluteMDH('a', 0, 'alpha', pi/2, 'd', 0, 'offset', pi/2), 
                     ], ...
                     'name', 'PRM robot');
 
-
+% L1 = 0.3;
+% L2 = 0.3;
+% L3 = 0.3;
+% 
+% robot = SerialLink([Revolute('a', 0, 'd', L1, 'alpha', pi/2, 'offset', pi/2), ...
+%                     Revolute('a', L2, 'd', 0, 'alpha', 0), ...
+%                     Revolute('a', L3, 'd', 0, 'alpha', pi/2, 'offset', -pi/2)], ...
+%                     'name', 'RRR Manipulator');
 end
                     % RevoluteMDH('a', l_2L1, 'alpha', 0, 'd', 0, 'offset', pi), ...% is q2 
