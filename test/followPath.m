@@ -1,5 +1,6 @@
 % Robot
 [S,M] = make_kinematics_model();
+robot = make_robot();
 
 % Generate Path
 nPts = 100;

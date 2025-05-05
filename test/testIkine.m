@@ -1,4 +1,5 @@
-[S,M] = make_kinematics_model()
+[S,M] = make_kinematics_model();
+robot = make_robot();
 
 nTests = 10;
 plotOn = true;
