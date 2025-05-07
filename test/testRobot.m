@@ -1,16 +1,17 @@
 clear;close all
 robot = make_robot()
 
-% q1 = 0;
-% q2 = 0;
-% q3 = 0;
-% q4 = 0;
-% q5 = 0;
-% q6 = 0;
-% q7 = 0;
-% 
-% q = [q1 q2 0 -q2 q2 q3 q4 q5 q6 q7]
-% robot.teach(compParams(zeros(1,7)))
+q1 = 0;
+q2 = 0;
+q3 = 0;
+q4 = 0;
+q5 = 0;
+q6 = 0;
+q7 = 0;
+
+q = [q1 q2 0 -q2 q2 q3 q4 q5 q6 q7]
+
+T = robot.fkine(q)
 [S_fake,M] = make_kinematics_model()
 
 
@@ -24,6 +25,7 @@ for i = 1:size(q,1)
     Si = [Si(3,2) Si(1,3) Si(2,1) Si(1:3,4)']'
     S(:,i) = Si
 end
+
 
 
 function qr = compParams(q)
