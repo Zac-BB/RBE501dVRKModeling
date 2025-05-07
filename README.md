@@ -1,11 +1,15 @@
 # RBE501dVRKModeling
 
+This project focuses on developing a kinematic model of the Patient Side Manipulator (PSM), a component of the da Vinci Research Kit (dVRK), using the Product of Exponentials (PoE) formulation from modern robotics.
 
-## Resources
+The PoE method offers a compact and mathematically robust way to represent the forward kinematics of serial manipulators. Unlike traditional Denavit-Hartenberg (DH) parameters, PoE models the manipulator as a product of exponentials of twist coordinates, providing more flexibility and clarity in handling complex configurations and multiple coordinate frames.
 
-https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10496497
-https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8758871
-https://research.intusurg.com/images/2/26/User_Guide_DVRK_Jan_2019.pdf
-https://acta.uni-obuda.hu/Chrysilla_Eusman_Deguet_Kazanzides_95.pdf
-https://dvrk.readthedocs.io/devel/pages/kit/from_ISI/Classic/PSM.html
-https://smarts.lcsr.jhu.edu/wp-content/uploads/2017/04/dvrk-identification.pdf
+In this project:
+
+    Each joint of the PSM is defined by a screw axis in the space frame.
+
+    The forward kinematics are computed using the matrix exponential of each screw, multiplied in sequence with the manipulator’s home configuration.
+
+    The resulting transformation maps joint angles to end-effector poses in 3D space.
+
+This modeling approach supports high-precision control and provides a strong foundation for tasks like calibration, motion planning, and real-time teleoperation. It also aligns with modern robotics theory, as taught in advanced robotics courses and used in professional applications.
